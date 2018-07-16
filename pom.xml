@@ -19,7 +19,7 @@
     <build>
         <plugins>
             <!--*******************CheckStyle Plugin*******************************-->
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.0.0</version>
@@ -39,17 +39,17 @@
                             <encoding>UTF-8</encoding>
                             <consoleOutput>true</consoleOutput>
                             <failsOnError>true</failsOnError>
-                            <!-- <linkXRef>false</linkXRef>-->
+                            &lt;!&ndash; <linkXRef>false</linkXRef>&ndash;&gt;
                         </configuration>
                         <goals>
                             <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
 
             <!--*******************PMD Plugin******************************-->
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>3.10.0</version>
@@ -73,6 +73,46 @@
                         <version>1.0-SNAPSHOT</version>
                     </dependency>
                 </dependencies>
+            </plugin>-->
+
+            <!--******************Findbug Plugin************************-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>3.0.5</version>
+                <configuration>
+                    <effort>Max</effort>
+                    <threshold>Low</threshold>
+                    <xmlOutput>true</xmlOutput>
+
+                    <!--<xmlOutput>true</xmlOutput>
+                    <xmlOutputDirectory>target/site</xmlOutputDirectory>-->
+
+                    <!--&lt;!&ndash;Filter bugs to report&ndash;&gt;
+                    <excludeFilterFile>findbugs-exclude.xml</excludeFilterFile>
+                    <includeFilterFile>findbugs-include.xml</includeFilterFile>-->
+
+
+                    <!--&lt;!&ndash;     Specifying which bug detectors to run &ndash;&gt;
+                    <visitors>FindDeadLocalStores,UnreadFields</visitors>-->
+
+                    <!--&lt;!&ndash;      Specifying which bug detectors to skip     &ndash;&gt;
+                    <omitVisitors>FindDeadLocalStores,UnreadFields</omitVisitors>-->
+
+                   <!-- &lt;!&ndash;    Specifying which classes to analyze   &ndash;&gt;
+                    <onlyAnalyze>org.codehaus.mojo.findbugs.*</onlyAnalyze>-->
+
+                    <!--&lt;!&ndash;   Specifying which classes to analyze    &ndash;&gt;
+                    <pluginList>myDetectors.jar, yourDetectors.jar</pluginList>-->
+
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
